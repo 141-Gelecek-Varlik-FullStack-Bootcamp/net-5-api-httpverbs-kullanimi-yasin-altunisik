@@ -37,14 +37,14 @@ namespace WebApi.AddControllers
             }
         };
 
-        [HttpGet]
+        [HttpGet]       //GET
         public List<Roommate> GetRoommates()
         {
             var roommateList = RoommateList.OrderBy(x=> x.Id).ToList<Roommate>();
             return roommateList;
         }
 
-        [HttpPost]
+        [HttpPost]      //POST
         public IActionResult AddRoommate([FromBody] Roommate newRoommate)
         {
             var roommate = RoommateList.SingleOrDefault(x => x.Name == newRoommate.Name);
@@ -56,7 +56,7 @@ namespace WebApi.AddControllers
             return Ok();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}")]       //PUT
         public IActionResult UpdateRoommate(int id, [FromBody] Roommate updatedRoommate)
         {
             var roommate = RoommateList.SingleOrDefault(x => x.Id == id);
@@ -73,7 +73,7 @@ namespace WebApi.AddControllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")]        //DELETE
 
         public IActionResult DeleteRoommate(int id)
         {
